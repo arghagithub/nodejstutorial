@@ -3,6 +3,8 @@ const os=require('os');
 const path=require('path');
 const oper=require('./script');
 const {add,sub,mul}=oper;
+const chalk= require('chalk');
+const validator = require('validator');
 // fs.writeFile('hello.txt','My name is Argha Golui','utf-8',(err)=>{
 //     if(!err){
 //         console.log("data is written on the file successfully");
@@ -47,6 +49,8 @@ const {add,sub,mul}=oper;
 // const data=path.parse("E:/bmicalculatormernproject/Backend/middleware/fetchadmin.js");
 // console.log(data.root);
 
-console.log(add(5,2));
-console.log(sub(5,1));
-console.log(mul(5,2));
+// console.log(add(5,2));
+// console.log(sub(5,1));
+// console.log(mul(5,2));
+
+console.log(validator.isEmail('foobar.com')?chalk.green.inverse('true'):chalk.red.bold.italic.underline.inverse('false'));
