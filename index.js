@@ -53,4 +53,20 @@ const validator = require('validator');
 // console.log(sub(5,1));
 // console.log(mul(5,2));
 
-console.log(validator.isEmail('foobar.com')?chalk.green.inverse('true'):chalk.red.bold.italic.underline.inverse('false'));
+// console.log(validator.isEmail('foobar@gmail.com')?chalk.green.inverse('true'):chalk.red.bold.italic.underline.inverse('false'));
+
+
+
+//video 14: module wrapper function
+
+/*(function (exports, require, module, __filename, __dirname) {  
+       
+    
+ });
+*/
+
+(function(){
+    console.log("My name is khan");
+    console.log(__filename);
+    console.log(__dirname);
+})();
