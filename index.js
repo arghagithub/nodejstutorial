@@ -5,6 +5,7 @@ const oper=require('./script');
 const {add,sub,mul}=oper;
 const chalk= require('chalk');
 const validator = require('validator');
+const http= require('http');
 // fs.writeFile('hello.txt','My name is Argha Golui','utf-8',(err)=>{
 //     if(!err){
 //         console.log("data is written on the file successfully");
@@ -65,8 +66,22 @@ const validator = require('validator');
  });
 */
 
-(function(){
-    console.log("My name is khan");
-    console.log(__filename);
-    console.log(__dirname);
-})();
+// (function(){
+//     console.log("My name is khan");
+//     console.log(__filename);
+//     console.log(__dirname);
+// })();
+
+
+
+//create my own server
+
+const server= http.createServer((req,res)=>{
+    res.end("Hello from the other side");
+})
+
+//now how i sure of that server is listening our request or not
+
+server.listen(80,'127.0.0.1',()=>{
+    console.log('server is listening on the port 80');
+})
