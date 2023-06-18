@@ -140,28 +140,33 @@ const http = require('http');
 //all event properties and methods are an instance of an EventEmitter object. To be able to access these properties and methods, create an EventEmitter object:
 
 // to include the built in module in pur project we use require
-const events= require('events');
-const event= new events.EventEmitter();
-event.on("HiArgha",()=>{
-    console.log("Emi: Hello Argha, how are you?");
-})
+// const events= require('events');
+// const event= new events.EventEmitter();
+// event.on("HiArgha",()=>{
+//     console.log("Emi: Hello Argha, how are you?");
+// })
 
-event.on("HiArgha",()=>{
-    console.log("Argha : I am fine ");
-})
+// event.on("HiArgha",()=>{
+//     console.log("Argha : I am fine ");
+// })
 
-event.on("HiArgha",()=>{
-    console.log("Emi: Do you love me??");
-})
+// event.on("HiArgha",()=>{
+//     console.log("Emi: Do you love me??");
+// })
 
-event.on("HiArgha",()=>{
-    console.log("Argha: Yes, I love you");
-})
+// event.on("HiArgha",()=>{
+//     console.log("Argha: Yes, I love you");
+// })
 
-event.on("checkPage",(sc,msg)=>{// for one event we call severel callbacks
-    console.log(`status code is ${sc} and page is ${msg}`);
-})
+// event.on("checkPage",(sc,msg)=>{// for one event we call severel callbacks
+//     console.log(`status code is ${sc} and page is ${msg}`);
+// })
 
-event.emit("checkPage",200,"ok");//we send multiple arguments
+// event.emit("checkPage",200,"ok");//we send multiple arguments
 
-event.emit("HiArgha");
+// event.emit("HiArgha");
+
+
+
+
+
