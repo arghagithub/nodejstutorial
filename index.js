@@ -76,33 +76,33 @@ const http = require('http');
 
 //create my own server
 
-const server = http.createServer((req, res) => {
-    console.log(req.url);
-    if (req.url === '/') {
-        res.end("Hello from home side");
-    }
-    else if (req.url === '/about') {
-        res.end("Hello from about side");
-    }
-    else if (req.url === '/contact') {
-        res.end("Hello from contact side");
-    }
-    else if (req.url === '/api') {
-        const data = fs.readFileSync(`${__dirname}/UserApi/example.json`, 'utf-8');
-        res.writeHead(200,{"Content-type":"application/json"});
-        res.end(data);
-    }
-    else {
-        res.writeHead(404, { "Content-type": "text/html" });
-        res.end("<h1>page does not exists</h1>")
-    }
-})
+// const server = http.createServer((req, res) => {
+//     console.log(req.url);
+//     if (req.url === '/') {
+//         res.end("Hello from home side");
+//     }
+//     else if (req.url === '/about') {
+//         res.end("Hello from about side");
+//     }
+//     else if (req.url === '/contact') {
+//         res.end("Hello from contact side");
+//     }
+//     else if (req.url === '/api') {
+//         const data = fs.readFileSync(`${__dirname}/UserApi/example.json`, 'utf-8');
+//         res.writeHead(200,{"Content-type":"application/json"});
+//         res.end(data);
+//     }
+//     else {
+//         res.writeHead(404, { "Content-type": "text/html" });
+//         res.end("<h1>page does not exists</h1>")
+//     }
+// })
 
 // now how i sure of that server is listening our request or not
 
-server.listen(80, '127.0.0.1', () => {
-    console.log('server is listening on the port 80');
-})
+// server.listen(80, '127.0.0.1', () => {
+//     console.log('server is listening on the port 80');
+// })
 
 
 
@@ -132,3 +132,36 @@ server.listen(80, '127.0.0.1', () => {
 
 // const objdata= JSON.parse(data);
 // console.log("step 4",objdata);
+
+
+
+//Event module
+
+//all event properties and methods are an instance of an EventEmitter object. To be able to access these properties and methods, create an EventEmitter object:
+
+// to include the built in module in pur project we use require
+const events= require('events');
+const event= new events.EventEmitter();
+event.on("HiArgha",()=>{
+    console.log("Emi: Hello Argha, how are you?");
+})
+
+event.on("HiArgha",()=>{
+    console.log("Argha : I am fine ");
+})
+
+event.on("HiArgha",()=>{
+    console.log("Emi: Do you love me??");
+})
+
+event.on("HiArgha",()=>{
+    console.log("Argha: Yes, I love you");
+})
+
+event.on("checkPage",(sc,msg)=>{// for one event we call severel callbacks
+    console.log(`status code is ${sc} and page is ${msg}`);
+})
+
+event.emit("checkPage",200,"ok");//we send multiple arguments
+
+event.emit("HiArgha");
