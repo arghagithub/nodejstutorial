@@ -166,7 +166,21 @@ const http = require('http');
 
 // event.emit("HiArgha");
 
+//video 23:
+const sendmail=require('./app');
+const express = require('express')
+const app = express()
+const port = 80
 
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
+app.get('/sendmail',sendmail);
+
+app.listen(port, () => {
+  console.log(`Example app listening on port ${port}`)
+})
 
 
 
