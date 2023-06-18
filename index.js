@@ -1,11 +1,11 @@
-const fs= require('fs');
-const os=require('os');
-const path=require('path');
-const oper=require('./script');
-const {add,sub,mul}=oper;
-const chalk= require('chalk');
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+const oper = require('./script');
+const { add, sub, mul } = oper;
+const chalk = require('chalk');
 const validator = require('validator');
-const http= require('http');
+const http = require('http');
 // fs.writeFile('hello.txt','My name is Argha Golui','utf-8',(err)=>{
 //     if(!err){
 //         console.log("data is written on the file successfully");
@@ -76,25 +76,54 @@ const http= require('http');
 
 //create my own server
 
-const server= http.createServer((req,res)=>{
-    console.log(req.url);
-    if(req.url==='/'){
-        res.end("Hello from home side");
-    }
-    else if(req.url==='/about'){
-        res.end("Hello from about side");
-    }
-    else if(req.url==='/contact'){
-        res.end("Hello from contact side");
-    }
-    else{
-        res.writeHead(404,{"Content-type":"text/html"});
-        res.end("<h1>page does not exists</h1>")
-    }
-})
+// const server= http.createServer((req,res)=>{
+//     console.log(req.url);
+//     if(req.url==='/'){
+//         res.end("Hello from home side");
+//     }
+//     else if(req.url==='/about'){
+//         res.end("Hello from about side");
+//     }
+//     else if(req.url==='/contact'){
+//         res.end("Hello from contact side");
+//     }
+//     else{
+//         res.writeHead(404,{"Content-type":"text/html"});
+//         res.end("<h1>page does not exists</h1>")
+//     }
+// })
 
 //now how i sure of that server is listening our request or not
 
-server.listen(80,'127.0.0.1',()=>{
-    console.log('server is listening on the port 80');
-})
+// server.listen(80,'127.0.0.1',()=>{
+//     console.log('server is listening on the port 80');
+// })
+
+
+
+// Play wit json
+//create a js object and convert it json
+const biodata = {
+    name: 'Argha Golui',
+    rollno: 'ECE2019/062',
+    department: 'ECE'
+}
+console.log("step 1:",biodata);
+const jsondata= JSON.stringify(biodata);
+console.log(jsondata);
+
+// write it to another file
+
+fs.writeFileSync('json.txt',jsondata,'utf-8');
+console.log("step 2: data is written on the file");
+
+// read the data from the file
+
+const data= fs.readFileSync('json.txt','utf-8');
+console.log("step 2: data is read from the file",data);
+
+
+// convert it js object
+
+const objdata= JSON.parse(data);
+console.log("step 4",objdata);
