@@ -77,7 +77,20 @@ const http= require('http');
 //create my own server
 
 const server= http.createServer((req,res)=>{
-    res.end("Hello from the other side");
+    console.log(req.url);
+    if(req.url==='/'){
+        res.end("Hello from home side");
+    }
+    else if(req.url==='/about'){
+        res.end("Hello from about side");
+    }
+    else if(req.url==='/contact'){
+        res.end("Hello from contact side");
+    }
+    else{
+        res.writeHead(404,{"Content-type":"text/html"});
+        res.end("<h1>page does not exists</h1>")
+    }
 })
 
 //now how i sure of that server is listening our request or not
