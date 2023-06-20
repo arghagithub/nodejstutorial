@@ -121,14 +121,42 @@
 
 
 // video 7: customize the views directory
-const path=require('path');
+// const path=require('path');
+// const express = require('express');
+// const app = express()
+// const port = 80;
+// const templatepath= path.join(__dirname,'templates');
+
+// app.set('view engine','hbs');
+// app.set('views',templatepath);
+// app.get('/',(req,res)=>{
+//     res.render('index',{
+//         name:"Argha Golui"
+//     });
+// })
+
+// app.get('/about',(req,res)=>{
+//     res.render('about');
+// })
+
+// app.listen(port, () => {
+//   console.log(`Example app listening on port ${port}`)
+// })
+
+
+
+// video 8: using partials
 const express = require('express');
+const path=require('path');
+const hbs=require('hbs');
 const app = express()
 const port = 80;
-const templatepath= path.join(__dirname,'templates');
+const viewspath= path.join(__dirname,'templates/views');
+const partialpath=path.join(__dirname,'templates/partials');
+hbs.registerPartials(partialpath);
 
 app.set('view engine','hbs');
-app.set('views',templatepath);
+app.set('views',viewspath);
 app.get('/',(req,res)=>{
     res.render('index',{
         name:"Argha Golui"
@@ -136,7 +164,9 @@ app.get('/',(req,res)=>{
 })
 
 app.get('/about',(req,res)=>{
-    res.render('about');
+    res.render('about',{
+        name:"Argha Golui"
+    });
 })
 
 app.listen(port, () => {
