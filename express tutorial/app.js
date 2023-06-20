@@ -147,28 +147,42 @@
 
 // video 8: using partials
 const express = require('express');
-const path=require('path');
-const hbs=require('hbs');
+const path = require('path');
+const hbs = require('hbs');
 const app = express()
 const port = 80;
-const viewspath= path.join(__dirname,'templates/views');
-const partialpath=path.join(__dirname,'templates/partials');
+const viewspath = path.join(__dirname, 'templates/views');
+const partialpath = path.join(__dirname, 'templates/partials');
 hbs.registerPartials(partialpath);
 
-app.set('view engine','hbs');
-app.set('views',viewspath);
-app.get('/',(req,res)=>{
-    res.render('index',{
-        name:"Argha Golui"
+app.set('view engine', 'hbs');
+app.set('views', viewspath);
+app.get('/', (req, res) => {
+    res.render('index', {
+        name: "Argha Golui"
     });
 })
 
-app.get('/about',(req,res)=>{
-    res.render('about',{
-        name:"Argha Golui"
+app.get('/about', (req, res) => {
+    res.render('about', {
+        name: "Argha Golui"
     });
+})
+
+app.get('/about/*', (req, res) => {
+    res.render('error', {
+        name: "Argha Golui",
+        message:"404 error: This about page is invalid"
+    })
+})
+
+app.get('*', (req, res) => {
+    res.render('error', {
+        name: "Argha Golui",
+        message:"404 page not found"
+    })
 })
 
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`)
+    console.log(`Example app listening on port ${port}`)
 })
